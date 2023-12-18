@@ -4,13 +4,14 @@ import Model.Carro;
 import Model.OrdemServico;
 
 import javax.swing.*;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 
 public class EntradaSaida {
 
-        public static int mostraMenuZero() {
-            String[] opcoes = {"Registrar um novo veiculo", "Sair"};
+        public static int mostraMenuZero(){
+            String[] opcoes = {"Registrar um novo veículo", "Sair"};
 
             JComboBox menu = new JComboBox(opcoes);
             JOptionPane.showConfirmDialog(null, menu, "Selecione a opção desejada", JOptionPane.DEFAULT_OPTION);
@@ -18,7 +19,7 @@ public class EntradaSaida {
         }
 
         public static int mostraMenu() {
-            String[] opcoes = {"Registrar um novo veiculo", "Mostrar veiculos registrados", "Criar Ordem de Serviço"
+            String[] opcoes = {"Registrar um novo veículo", "Mostrar veículos registrados", "Criar Ordem de Serviço"
                     , "Mostrar Ordens de serviço registradas","Sair"};
 
             JComboBox menu = new JComboBox(opcoes);
@@ -33,19 +34,19 @@ public class EntradaSaida {
         }
 
         public static String inputModeloCarro(){
-            return  JOptionPane.showInputDialog(null,"Informe o modelo do veiculo","Registro de Veiculo",JOptionPane.PLAIN_MESSAGE);
+            return  JOptionPane.showInputDialog(null,"Informe o modelo do veículo","Registro de Veículo",JOptionPane.PLAIN_MESSAGE);
         }
 
         public static String inputPlacaVeiculo() {
-             return JOptionPane.showInputDialog(null, "Informe a placa do veiculo ", "Registro de Veiculo", JOptionPane.PLAIN_MESSAGE);
+             return JOptionPane.showInputDialog(null, "Informe a placa do veículo ", "Registro de Veículo", JOptionPane.PLAIN_MESSAGE);
         }
 
         public static int inputAnoVeiculo() {
-            return Integer.parseInt(JOptionPane.showInputDialog(null,"Informe o ano de fabricação do veiculo","Registro de Veiculo",JOptionPane.PLAIN_MESSAGE));
+            return Integer.parseInt(JOptionPane.showInputDialog(null,"Informe o ano de fabricação do veículo","Registro de Veiculo",JOptionPane.PLAIN_MESSAGE));
         }
 
         public static String inputCorVeiculo() {
-            return JOptionPane.showInputDialog(null,"Informe a cor do veiculo","Registro de Veiculo",JOptionPane.PLAIN_MESSAGE);
+            return JOptionPane.showInputDialog(null,"Informe a cor do veículo","Registro de Veículo",JOptionPane.PLAIN_MESSAGE);
         }
 
         public static void mostraCarrosRegistrados(ArrayList<Carro> carros, int index) {
@@ -101,13 +102,14 @@ public class EntradaSaida {
     }
 
     public static void mostraOrdensDeServicoRegistradas(ArrayList<OrdemServico> ordens, ArrayList<Carro> carros, int index) {
+            String valorOrcamentoFormatado = new DecimalFormat("#,##0.00").format(ordens.get(index).getValorOrcamento());
         String desc =
                 "Código da Ordem de Serviço: " + ordens.get(index).getCodigoOrdemServico() + "\n" +
                 "Descrição do Defeito: " + ordens.get(index).getDescricaoDefeito() + "\n" +
-                "Valor do Orçamento:  " + ordens.get(index).getValorOrcamento() + "\n" +
+                "Valor do Orçamento:  " + valorOrcamentoFormatado + "\n" +
                 "Funcionário Responsável: " + ordens.get(index).getFuncionarioResponsavel() + "\n" +
                 "Data de Entrada: " + ordens.get(index).getDataEntrada() + "\n" +
-                "Modelo do Veiculo:  " + carros.get(index).getModelo() + "\n" +
+                "Modelo do Veículo:  " + carros.get(index).getModelo() + "\n" +
                 "Ano: " + carros.get(index).getAno() + "\n" +
                 "Placa: " + carros.get(index).getPlaca()+ "\n" +
                 "Cor: " + carros.get(index).getCor() + "\n";
